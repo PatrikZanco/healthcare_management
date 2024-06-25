@@ -4,13 +4,17 @@ class PatientBase(BaseModel):
     name: str
     email: str
     age: int
-    address: str
 
 class PatientCreate(PatientBase):
     pass
+
+class PatientUpdate(BaseModel):
+    name: str | None = None
+    email: str | None = None
+    age: int | None = None
 
 class PatientResponse(PatientBase):
     id: int
 
     class Config:
-        orm_mode = True
+        from_attributes = True
